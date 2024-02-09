@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  postgres1:
+    hostname: postgres1
+    container_name: postgres1
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+#    volumes:
+#      - postgres1:/var/lib/postgresql/data
+
+#volumes:
+#  postgres1:
+#    driver_opts:
+#      type: tmpfs
+#      device: tmpfs

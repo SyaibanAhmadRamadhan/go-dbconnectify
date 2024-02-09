@@ -1,0 +1,45 @@
+version: '3'
+
+volumes:
+  mongo.one.vol:
+  mongo.two.vol:
+  mongo.three.vol:
+
+services:
+  mongo.one.db:
+    container_name: mongo.one.db
+    image: mongo:latest
+    ports:
+      - "20000:27017"
+    volumes:
+      - mongo.one.vol:/data/db
+      # - ./rs-init.sh:/scripts/rs-init.sh
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+
+  mongo.two.db:
+    container_name: mongo.two.db
+    image: mongo:latest
+    ports:
+      - "20001:27017"
+    depends_on:
+      - mongo.one.db
+    volumes:
+      - mongo.two.vol:/data/db
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+
+  mongo.three.db:
+    container_name: mongo.three.db
+    image: mongo:latest
+    ports:
+      - "20002:27017"
+    depends_on:
+      - mongo.one.db
+    volumes:
+      - mongo.three.vol:/data/db
+    restart: always
+    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "dbrs" ]
+
+
+#docker exec -it mongo.one.db mongosh --eval "rs.initiate({_id:'dbrs', members: [{_id:0, host: 'mongo.one.db'},{_id:1, host: 'mongo.two.db'},{_id:2, host: 'mongo.three.db'}]})"
