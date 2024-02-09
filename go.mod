@@ -4,7 +4,6 @@ go 1.21
 
 require (
 	github.com/Masterminds/squirrel v1.5.4
-	github.com/SyaibanAhmadRamadhan/gocatch v1.241215.2142
 	github.com/go-sql-driver/mysql v1.7.1
 	github.com/jackc/pgx/v5 v5.5.0
 	github.com/jmoiron/sqlx v1.3.5
@@ -15,6 +14,7 @@ require (
 	go.mongodb.org/mongo-driver v1.13.1
 	go.opentelemetry.io/otel v1.21.0
 	go.opentelemetry.io/otel/trace v1.21.0
+	go.uber.org/mock v0.3.0
 )
 
 require (
@@ -39,11 +39,10 @@ require (
 	github.com/klauspost/compress v1.17.4 // indirect
 	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
 	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
-	github.com/maxbrunsfeld/counterfeiter/v6 v6.8.1 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/moby/term v0.5.0 // indirect
 	github.com/montanaflynn/stats v0.7.1 // indirect
-	github.com/oklog/ulid/v2 v2.1.0 // indirect
+	github.com/onsi/gomega v1.30.0 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.1.0-rc5 // indirect
 	github.com/opencontainers/runc v1.1.10 // indirect

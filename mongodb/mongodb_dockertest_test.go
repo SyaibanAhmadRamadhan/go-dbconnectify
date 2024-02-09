@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"testing"
-	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -97,28 +96,28 @@ func TestMongoDockerTest(t *testing.T) {
 }
 
 func setReplica(client *mongo.Client) {
-	replicaCfg := map[string]any{
-		"_id": "rs0",
-		"members": []any{
-			map[string]any{
-				"_id":  0,
-				"host": "localhost:27017",
-			},
-		},
-		"settings": map[string]any{
-			"chainingAllowed": true,
-		},
-		"heartbeatTimeoutSecs": 10,
-	}
-	adminDB := client.Database("admin")
-	cmd := bson.D{{"replSetInitiate", replicaCfg}}
-	result := bson.M{}
-	err := adminDB.RunCommand(context.Background(), cmd).Decode(&result)
-	if err != nil {
-		panic(err)
-	}
-
-	time.Sleep(10 * time.Second)
+	// replicaCfg := map[string]any{
+	// 	"_id": "rs0",
+	// 	"members": []any{
+	// 		map[string]any{
+	// 			"_id":  0,
+	// 			"host": "localhost:27017",
+	// 		},
+	// 	},
+	// 	"settings": map[string]any{
+	// 		"chainingAllowed": true,
+	// 	},
+	// 	"heartbeatTimeoutSecs": 10,
+	// }
+	// adminDB := client.Database("admin")
+	// cmd := bson.D{{"replSetInitiate", replicaCfg}}
+	// result := bson.M{}
+	// err := adminDB.RunCommand(context.Background(), cmd).Decode(&result)
+	// if err != nil {
+	// 	panic(err)
+	// }
+	//
+	// time.Sleep(10 * time.Second)
 }
 
 // query := bson.D{
